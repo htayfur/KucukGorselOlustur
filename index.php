@@ -12,14 +12,14 @@ License URI: http://htayfur.com/lisans
 */
 
 function menuyeekle(){
-    add_submenu_page('options-general.php','Küçük Görsel Oluştur',10,__FILE__,'EklentiFonksiyon');
+    add_submenu_page('options-general.php','Küçük Görsel Oluştur','Küçük Görsel Oluştur',10,__FILE__,'EklentiFonksiyon');
 }
 
 add_action('admin_menu','menuyeekle');
 
 function EklentiFonksiyon(){
 
-    if($_POST['onay'] != "Evet"){
+    if($_POST['onay'] == "Evet"){
         $yazilar = get_posts(array('numberposts'=>'-1','post_status'=>array('draft','publish','pending')));
 
         foreach($yazilar as $yazi){
@@ -56,8 +56,8 @@ function EklentiFonksiyon(){
     }else{
         echo '<div style="width: 600px;margin: 0 auto;margin-top: 30px;">
 <form action="" method="POST">
-    <p>Eklenmiş bütün yazılara öne çıkarılmış görsel tanımlamak istiyor musunuz?</p><br>
-    <p>(Daha önce tanımlanmış öne çıkarılmış görseller tekrar tanımlanmayacaktır.)</p><br>
+    <p>Eklenmiş bütün yazılara öne çıkarılmış görsel tanımlamak istiyor musunuz?</p>
+    <p>(Daha önce tanımlanmış öne çıkarılmış görseller tekrar tanımlanmayacaktır.)</p>
     <input type="hidden" name="onay" value="Evet">
     <input class="button button-primary button-hero install-now" type="submit" value="Öne Çıkarılmış Görselleri Oluştur!">
 </form>
@@ -77,5 +77,10 @@ function EklentiKaldir(){
 function EklentiPasif(){
 
 }
+
+
+register_activation_hook(__FILE__,'EklentiKurulum');
+register_uninstall_hook(__FILE__,'EklentiKaldir');
+register_deactivation_hook(__FILE__,'EklentiPasif');
 
 ?>
