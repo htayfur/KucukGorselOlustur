@@ -11,11 +11,11 @@ License:     Private
 License URI: http://htayfur.com/lisans
 */
 
-function menuyeekle(){
+function KGOmenuyeekle(){
     add_submenu_page('options-general.php','Küçük Görsel Oluştur','Küçük Görsel Oluştur',10,__FILE__,'EklentiFonksiyon');
 }
 
-add_action('admin_menu','menuyeekle');
+add_action('admin_menu','KGOmenuyeekle');
 
 function EklentiFonksiyon(){
 
@@ -66,21 +66,21 @@ function EklentiFonksiyon(){
 
 }
 
-function EklentiKurulum(){
+function KGOEklentiKurulum(){
 
 }
 
-function EklentiKaldir(){
+function KGOEklentiKaldir(){
 
 }
 
-function EklentiPasif(){
+function KGOEklentiPasif(){
 
 }
 
 
-register_activation_hook(__FILE__,'EklentiKurulum');
-register_uninstall_hook(__FILE__,'EklentiKaldir');
-register_deactivation_hook(__FILE__,'EklentiPasif');
+register_activation_hook(__FILE__,'KGOEklentiKurulum');
+register_uninstall_hook(__FILE__,'KGOEklentiKaldir');
+register_deactivation_hook(__FILE__,'KGOEklentiPasif');
 
 ?>
